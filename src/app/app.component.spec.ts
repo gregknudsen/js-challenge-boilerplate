@@ -28,4 +28,13 @@ describe('AppComponent', () => {
       'Hello, Kin OCR'
     );
   });
+
+  /*
+  TESTS TO ADD
+  reads CSV correctly
+  ensures max file size
+  checksum catches both correct and incorrect results
+  
+  
+  */
 });
