@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CsvService } from './services/csv.services';
 import { CommonModule, NgFor } from '@angular/common';
+import { OCR } from './models/OCR';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { CommonModule, NgFor } from '@angular/common';
 export class AppComponent {
   title = 'kin-ocr';
   constructor(private _csvService: CsvService) {}
-  public importedData: Array<any> = [];
+  public importedData: Array<OCR> = [];
 
   public async importDataFromCSV(event: any) {
     let fileContent = await this.getTextFromFile(event);

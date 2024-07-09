@@ -6,8 +6,8 @@ import { CsvService } from './services/csv.services';
 import { AppComponent } from './app.component';
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent ],
+  // declarations: [ AppComponent ],
   providers: [ CsvService ],
-  bootstrap:    [ AppComponent ]
+  // bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

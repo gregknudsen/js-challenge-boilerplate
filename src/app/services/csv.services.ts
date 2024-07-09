@@ -1,3 +1,4 @@
+import { OCR } from "../models/OCR";
 import { calculateCheckSum } from "../utils/calculateCheckSum";
 
 export class CsvService {
@@ -7,7 +8,7 @@ export class CsvService {
     // console.log("1st", dataRows[9]);
     // return dataRows;
     dataRows.forEach((row => {
-      let obj: any = new Object();
+      let obj: {policyNumber: number | string, isValid: boolean} = new OCR();
       
         obj.policyNumber = row;
       // }
@@ -36,22 +37,6 @@ export class CsvService {
   private validateCheckSums(data: any[]): Array<any> {
     console.log(data);
     data.forEach(el => {
-      console.log(el);
-      
-      // const arr = el.policyNumber
-      // .split('')
-      // .reverse()
-      // .map((num: string) => Number.parseInt(num))
-
-      // let lastNum = arr.shift();
-      // console.log(lastNum);
-      
-      // let sum = arr.reduce((acc: number, val: number, i: number) => {
-      //  return (acc + (val*(i+2)))
-      // }, lastNum)
-      // console.log("SUM", sum);
-      
-      // console.log("Number Array", arr);
       if (calculateCheckSum(el.policyNumber)) {
         el.isValid = true
       } else el.isValid = false
