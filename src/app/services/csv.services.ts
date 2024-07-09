@@ -4,7 +4,7 @@ import { calculateCheckSum } from "../utils/calculateCheckSum";
 export class CsvService {
   public importDataFromCSV(csvText: string): Array<any> {
     const dataRows = csvText.slice(csvText.indexOf('\n') + 1).split(',');
-    let dataArray: any[] = [];
+    let dataArray: OCR[] = [];
     // console.log("1st", dataRows[9]);
     // return dataRows;
     dataRows.forEach((row => {
