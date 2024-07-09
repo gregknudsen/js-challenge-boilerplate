@@ -1,1 +1,31 @@
-<h1>Hello, Kin OCR</h1>
+<h1>Kin OCR</h1>
+
+<div>Import simple data</div>
+<input
+  #fileUploadSimple
+  [accept]="'.csv'"
+  type="file"
+  class="file-input"
+  (change)="importDataFromCSV($event)"
+  hidden="true"
+  />
+  <button (click)="fileUploadSimple.click()">Import from csv</button>
+  <br /><br />
+  <div>data from csv</div>
+
+<table>
+  <tr *ngIf="importedData.length > 0">
+    <td>&nbsp;</td>
+    <th>Policy #</th>
+    <th>Result</th>
+  </tr>
+  <tr *ngFor="let item of importedData; let i = index">
+    <td>
+      {{ i+1 }}
+    </td>
+    <td >
+      {{ item }}
+    </td>
+    <td>Testing</td>
+  </tr>
+</table>
