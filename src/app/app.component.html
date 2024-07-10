@@ -1,11 +1,11 @@
-<h1>Kin OCR</h1>
+<h1>Hello, Kin OCR</h1>
 
 <h2>OCR File Upload</h2>
 <input
   #fileUploadSimple
   [accept]="'.csv'"
   type="file"
-  (change)="importDataFromCSV($event)"
+  (change)="importData($event)"
   hidden="true"
 />
 <button class="btn mb-1" (click)="fileUploadSimple.click()">Import</button>

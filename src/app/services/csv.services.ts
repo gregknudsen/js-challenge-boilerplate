@@ -4,7 +4,6 @@ import { isCheckSum } from "../utils/calculateCheckSum";
 export class CsvService {
 
   public async postCsvFile(data: OCR[]): Promise<void> {
-
     const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
       body: JSON.stringify(data),
@@ -30,10 +29,10 @@ export class CsvService {
       // }
       dataArray.push(obj);
     }));
-    console.log("FINAL", dataArray);
+    // console.log("FINAL", dataArray);
 
     let resultArray = this.validateCheckSums(dataArray);
-    console.log("RESULT", resultArray);
+    // console.log("RESULT", resultArray);
     
     return resultArray;
   }

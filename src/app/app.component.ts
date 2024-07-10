@@ -17,7 +17,7 @@ export class AppComponent {
   public importedData: Array<OCR> = [];
   public fileName: string = '';
 
-  public async importDataFromCSV(event: any): Promise<void> {
+  public async importData(event: any): Promise<void> {
     let fileContent = await this.getTextFromFile(event);
     this.importedData = this.csvService.importDataFromCSV(fileContent);
   }
