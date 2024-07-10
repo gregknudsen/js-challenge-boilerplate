@@ -13,29 +13,33 @@ import { OCR } from './models/OCR';
 })
 export class AppComponent {
   title = 'kin-ocr';
-  constructor(private _csvService: CsvService) {}
+  constructor(private csvService: CsvService) {}
   public importedData: Array<OCR> = [];
+  public fileName: string = '';
 
-  public async importDataFromCSV(event: any) {
+  public async importDataFromCSV(event: any): Promise<void> {
     let fileContent = await this.getTextFromFile(event);
+    this.importedData = this.csvService.importDataFromCSV(fileContent);
+  }
 
-    this.importedData = this._csvService.importDataFromCSV(fileContent);
+  public async handleSubmit(): Promise<void> {
+    this.csvService.postCsvFile(this.importedData);    
   }
   
   private async getTextFromFile(event: any) {
     const file: File = event.target.files[0];
 
-    // console.log("EVENT", file.type); // --> 'text/csv'
     if (file.type != 'text/csv'){
       alert("Please make sure you are uploading file with the extension '.csv'");
-      return '';
+      throw new Error("WRONG FILE TYPE");
     } else if (file.size > 2 * 1024) {
       alert(`Your file is too big! Please limit to 2MB or less.`)
-      return '';
+      throw new Error("FILE TOO BIG");
+    } else {
+      this.fileName = file.name;
+      let fileContent = await file.text();
+      
+      return fileContent;
     }
-    
-   let fileContent = await file.text();
-  //  console.log("CONTENT", fileContent);
-    return fileContent;
   }
 }

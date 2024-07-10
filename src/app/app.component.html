@@ -1,31 +1,40 @@
 <h1>Kin OCR</h1>
 
-<div>Import simple data</div>
+<h2>OCR File Upload</h2>
 <input
   #fileUploadSimple
   [accept]="'.csv'"
   type="file"
-  class="file-input"
   (change)="importDataFromCSV($event)"
   hidden="true"
-  />
-  <button (click)="fileUploadSimple.click()">Import from csv</button>
-  <br /><br />
-  <div>data from csv</div>
+/>
+<button class="btn mb-1" (click)="fileUploadSimple.click()">Import</button>
+<span class="ml-1" *ngIf="importedData.length > 0">
+  {{ fileName }}
+</span>
 
-<table>
+<table class="mb-1">
   <tr *ngIf="importedData.length > 0">
-    <td>&nbsp;</td>
+    <td class="empty">&nbsp;</td>
     <th>Policy #</th>
     <th>Result</th>
   </tr>
-  <tr *ngFor="let item of importedData; let i = index">
+  <tr
+    *ngFor="let item of importedData; let i = index"
+    [ngClass]="item.isValid ? 'success' : 'fail'"
+  >
     <td>
-      {{ i+1 }}
+      {{ i + 1 }}
     </td>
-    <td >
+    <td>
       {{ item.policyNumber }}
     </td>
-    <td>{{ item.isValid ? "Valid" : "Error"}}</td>
+    <td>
+      {{ item.isValid ? "Valid" : "Error" }}
+    </td>
   </tr>
 </table>
+
+<button *ngIf="importedData.length > 0" class="btn" (click)="handleSubmit()">
+  Submit
+</button>
