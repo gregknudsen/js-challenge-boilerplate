@@ -1,5 +1,9 @@
 # KinOcr Code Challenge
 
+## Quick note
+
+> all changes made in branch `greg-k`
+
 ## To Install
 
 `npm install`
