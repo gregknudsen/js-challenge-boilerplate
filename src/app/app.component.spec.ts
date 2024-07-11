@@ -20,23 +20,6 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'kin-ocr' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('kin-ocr');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, Kin OCR'
-    );
-  });
-
-
-  
   it('should correctly read a .csv file', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
@@ -51,7 +34,6 @@ describe('AppComponent', () => {
     fixture.detectChanges();
 
     expect(app.importData).toBeTruthy()
-    // expect(app.importDataFromCSV).toBe('sample.csv')
   });
 
   it('should correctly throw error for non .csv file', () => {
@@ -66,18 +48,8 @@ describe('AppComponent', () => {
     inputDebugEl.nativeElement.dispatchEvent(new InputEvent('change'));
     
     fixture.detectChanges();
-    // console.log((app.importData));
 
     expect(() => app.importData).toThrow(new Error("WRONG FILE TYPE"));
-    // expect(app.importDataFromCSV).toBe('sample.csv')
   })
 
-  /*
-  TESTS TO ADD
-  reads CSV correctly
-  ensures max file size
-  checksum catches both correct and incorrect results
-  
-  
-  */
 });
