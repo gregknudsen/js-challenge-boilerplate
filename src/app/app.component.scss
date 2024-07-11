@@ -7,6 +7,12 @@ th {
   border: 1px solid black;
   padding: 10px 20px;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
 .success {
   background-color: var(--color-success-100);
 }
@@ -33,6 +39,7 @@ th {
   font-size: 1.125rem;
   line-height: 1;
   min-width: 8rem;
+  max-width: 12rem;
   padding: 0.75rem 1.5rem;
   text-align: center;
   text-decoration: none;
@@ -44,4 +51,10 @@ th {
 }
 .ml-1 {
   margin-left: 1em;
+}
+
+@media (min-width: 800px) {
+  .container {
+    max-width: 60%;
+  }
 }

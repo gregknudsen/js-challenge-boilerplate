@@ -1,6 +1,6 @@
+import { TestBed } from '@angular/core/testing';
 import { CsvService } from './services/csv.services';
 import { OCR } from './models/OCR';
-import { TestBed } from '@angular/core/testing';
 
 describe("CSV Service", () => {
   let csvService: CsvService;

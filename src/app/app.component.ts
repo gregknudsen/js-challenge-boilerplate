@@ -14,7 +14,7 @@ import { OCR } from './models/OCR';
 export class AppComponent {
   title = 'kin-ocr';
   constructor(private csvService: CsvService) {}
-  public importedData: Array<OCR> = [];
+  public importedData: OCR[] = [];
   public fileName: string = '';
 
   public async importData(event: any): Promise<void> {

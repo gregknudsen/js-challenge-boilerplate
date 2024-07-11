@@ -1,40 +1,42 @@
-<h1>Hello, Kin OCR</h1>
-
-<h2>OCR File Upload</h2>
-<input
-  #fileUploadSimple
-  [accept]="'.csv'"
-  type="file"
-  (change)="importData($event)"
-  hidden="true"
-/>
-<button class="btn mb-1" (click)="fileUploadSimple.click()">Import</button>
-<span class="ml-1" *ngIf="importedData.length > 0">
-  {{ fileName }}
-</span>
-
-<table class="mb-1">
-  <tr *ngIf="importedData.length > 0">
-    <td class="empty">&nbsp;</td>
-    <th>Policy #</th>
-    <th>Result</th>
-  </tr>
-  <tr
-    *ngFor="let item of importedData; let i = index"
-    [ngClass]="item.isValid ? 'success' : 'fail'"
-  >
-    <td>
-      {{ i + 1 }}
-    </td>
-    <td>
-      {{ item.policyNumber }}
-    </td>
-    <td>
-      {{ item.isValid ? "Valid" : "Error" }}
-    </td>
-  </tr>
-</table>
-
-<button *ngIf="importedData.length > 0" class="btn" (click)="handleSubmit()">
-  Submit
-</button>
+<div class="container">
+  <h1>Kin OCR Code Challenge</h1>
+  
+  <h2>OCR File Upload</h2>
+  <input
+    #fileUploadSimple
+    [accept]="'.csv'"
+    type="file"
+    (change)="importData($event)"
+    hidden="true"
+  />
+  <button class="btn mb-1" (click)="fileUploadSimple.click()">Import</button>
+  <span class="ml-1" *ngIf="importedData.length > 0">
+    {{ fileName }}
+  </span>
+  
+  <table class="mb-1">
+    <tr *ngIf="importedData.length > 0">
+      <td class="empty">&nbsp;</td>
+      <th>Policy #</th>
+      <th>Result</th>
+    </tr>
+    <tr
+      *ngFor="let item of importedData; let i = index"
+      [ngClass]="item.isValid ? 'success' : 'fail'"
+    >
+      <td>
+        {{ i + 1 }}
+      </td>
+      <td>
+        {{ item.policyNumber }}
+      </td>
+      <td>
+        {{ item.isValid ? "Valid" : "Error" }}
+      </td>
+    </tr>
+  </table>
+  
+  <button *ngIf="importedData.length > 0" class="btn" (click)="handleSubmit()">
+    Submit
+  </button>
+</div>

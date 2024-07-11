@@ -2,9 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CsvService } from './services/csv.services';
 import { By } from '@angular/platform-browser';
-import { OCR } from './models/OCR';
-
-
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -28,11 +25,9 @@ describe('AppComponent', () => {
 
     const inputDebugEl  = fixture.debugElement.query(By.css('input[type=file]'));
     inputDebugEl.nativeElement.files = dataTransfer.files;
-
     inputDebugEl.nativeElement.dispatchEvent(new InputEvent('change'));
 
     fixture.detectChanges();
-
     expect(app.importData).toBeTruthy()
   });
 
@@ -44,11 +39,9 @@ describe('AppComponent', () => {
 
     const inputDebugEl  = fixture.debugElement.query(By.css('input[type=file]'));
     inputDebugEl.nativeElement.files = dataTransfer.files;
-    
     inputDebugEl.nativeElement.dispatchEvent(new InputEvent('change'));
     
     fixture.detectChanges();
-
     expect(() => app.importData).toThrow(new Error("WRONG FILE TYPE"));
   })
 
